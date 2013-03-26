@@ -4,12 +4,14 @@ require 'net/https'
 require 'cgi'
 require 'json'
 require 'yaml'
+require 'ostruct'
+
 
 module Dropbox # :nodoc:
     API_SERVER = "api.dropbox.com"
     API_CONTENT_SERVER = "api-content.dropbox.com"
     WEB_SERVER = "www.dropbox.com"
-    
+
     API_VERSION = 1
     SDK_VERSION = "1.5.1"
 
@@ -33,7 +35,8 @@ class DropboxSession
     private
 
     def do_http(uri, auth_token, request) # :nodoc:
-        http = Net::HTTP.new(uri.host, uri.port)
+        proxy = ENV['http_proxy'] ? URI.parse(ENV['http_proxy']) : OpenStruct.new
+        http  = Net::HTTP::Proxy(proxy.host, proxy.port).new(uri.host, uri.port)
 
         http.use_ssl = true
         enable_cert_checking(http)
