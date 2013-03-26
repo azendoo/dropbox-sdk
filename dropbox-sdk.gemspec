@@ -2,7 +2,7 @@
 Gem::Specification.new do |s|
     s.name = "dropbox-sdk"
 
-    s.version = "1.5.1"
+    s.version = "1.5.2"
     s.license = 'MIT'
 
     s.authors = ["Dropbox, Inc."]

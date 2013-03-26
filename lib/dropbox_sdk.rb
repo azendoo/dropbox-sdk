@@ -13,7 +13,7 @@ module Dropbox # :nodoc:
     WEB_SERVER = "www.dropbox.com"
 
     API_VERSION = 1
-    SDK_VERSION = "1.5.1"
+    SDK_VERSION = "1.5.2"
 
     TRUSTED_CERT_FILE = File.join(File.dirname(__FILE__), 'trusted-certs.crt')
 end
